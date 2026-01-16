@@ -1,0 +1,15 @@
+CREATE TABLE users (
+	id SERIAL PRIMARY KEY,
+	nome VARCHAR(100) NOT NULL,
+	email VARCHAR(100) UNIQUE NOT NULL,
+	password VARCHAR(255) NOT NULL
+);
+
+CREATE TABLE Equipamento (
+	id SERIAL PRIMARY KEY,
+	user_id INTEGER REFERENCES users(id),
+	nome VARCHAR(100),
+	brand VARCHAR(50)
+	condicao VARCHAR(20),
+	aquisicao DATE
+);
