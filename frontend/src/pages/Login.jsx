@@ -1,15 +1,29 @@
 import { useState } from 'react';
+import axios from 'axios';
+
+
 
 function Login() {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
 
-        console.log("Dados enviados", { email, password });
-        alert("Dados enviados veja o f12");
+        try {
+        const response = await axios.post('http://localhost:5000/api/login', { email, password })
+        localStorage.setItem('token', response.data.token);
+        alert("Sucesss man")
+    }catch(error) {
+        console.error("Erro brutal", error);
+        if (error.response) {
+            console.log("Resposta", error.response.data);
+            alert(error.response.data.message);
+        } else {
+            console.log("server caiu");
+        }
     }
+}
     return (
         <div className="container">
             <h2>Login</h2>
@@ -25,5 +39,8 @@ function Login() {
         </div>
     );
 }
+
+
+
 
 export default Login;

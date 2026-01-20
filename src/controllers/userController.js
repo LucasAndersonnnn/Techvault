@@ -30,6 +30,8 @@ exports.criarUsuario = async (req, res) => {
 
 
 exports.loginUsuario = async (req, res) => {
+    console.log("TENTATIVA");
+    console.log(req.body);
     try {
         const { email, password} = req.body
         if (!email || !password) {
