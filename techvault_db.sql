@@ -9,7 +9,7 @@ CREATE TABLE Equipamento (
 	id SERIAL PRIMARY KEY,
 	user_id INTEGER REFERENCES users(id),
 	nome VARCHAR(100),
-	brand VARCHAR(50)
+	brand VARCHAR(50),
 	condicao VARCHAR(20),
 	aquisicao DATE
 );
